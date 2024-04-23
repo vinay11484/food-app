@@ -1,11 +1,17 @@
 import LOGO_URL from "../utils/contants";
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, state } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
+import Register from "./Register";
 const Header = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
   let [btnName, setBtnName] = useState("login");
   const { loggedInUser } = useContext(UserContext);
+  const childData = (data) => {
+    console.log(data, "wfewrferwfere");
+    data && setShowSidebar(false);
+  };
 
   const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
@@ -28,17 +34,31 @@ const Header = () => {
           <li className="m-3 p-3">
             <Link to={"/cart"}>Cart{cartItems.length}</Link>
           </li>
-
-          <button
-            className="m-3 p-3"
-            onClick={() => {
-              btnName == "login" ? setBtnName("logout") : setBtnName("login");
-            }}
-          >
-            {btnName}
-          </button>
+          <li className="m-3 p-3">
+            <button onClick={() => setShowSidebar(!showSidebar)}>
+              Sign In
+            </button>
+          </li>
           <li className="m-3 p-3">{loggedInUser}</li>
         </ul>
+      </div>
+      <div
+        className={`transition-all absolute top-0 right-0 z-50 bg-black/40 w-full h-full ease-in-out duration-0 ${
+          showSidebar ? "translate-x-0 " : "translate-x-full "
+        } `}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            setShowSidebar(!showSidebar);
+          }
+        }}
+      >
+        <div
+          className={`top-0 right-0 w-[35vw]  overflow-y-auto bg-white p-10 pl-20 text-black fixed h-full z-40 ${
+            showSidebar ? "translate-x-0 " : "translate-x-full "
+          } ease-in-out duration-300 `}
+        >
+          <Register childData={childData}></Register>
+        </div>
       </div>
     </div>
   );

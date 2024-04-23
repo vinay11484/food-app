@@ -7,18 +7,19 @@ export default function RestaurantMenu() {
   const { resId } = useParams();
 
   const resInfo = useRestaurant(resId);
+  console.log(resInfo);
   const [shoIndex, setShowIndex] = useState(null);
 
   const { name, cuisines, costForTwoMessage } =
-    resInfo != null ? resInfo?.cards[0]?.card?.card?.info : [];
-
+    resInfo != null ? resInfo?.cards[2]?.card?.card?.info : [];
+  console.log(name, cuisines);
   const { itemCards } =
     resInfo != null
-      ? resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      ? resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
           ?.card
       : [];
   const categories =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (crd) => {
         if (
           crd?.card?.card?.["@type"] ===

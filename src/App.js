@@ -14,6 +14,7 @@ import appStore from "./utils/appStore";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import Example from "./components/Example";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Register from "./components/Register";
 const queryClint = new QueryClient();
 const About = lazy(() => import("./components/About"));
 const AppLayout = () => (
@@ -59,6 +60,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart></Cart>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
     errorElement: <Error></Error>,

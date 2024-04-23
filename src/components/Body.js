@@ -44,6 +44,7 @@ const Body = () => {
 
   const featchData = async () => {
     const data = await fetch(SWIGGY_URl);
+    console.log(data);
     const json = await data.json();
     setRestrents(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
