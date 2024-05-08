@@ -12,7 +12,6 @@ import { Suspense } from "react";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import Example from "./components/Example";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Register from "./components/Register";
 const queryClint = new QueryClient();
@@ -21,7 +20,6 @@ const AppLayout = () => (
   <Provider store={appStore}>
     <div className="app">
       <Header></Header>
-      <Example></Example>
       <Outlet></Outlet>
     </div>
   </Provider>

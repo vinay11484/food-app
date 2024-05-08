@@ -4,35 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { SWIGGY_URl } from "../utils/contants";
-import { useQuery } from "@tanstack/react-query";
 
 const Body = () => {
   const [resturents, setRestrents] = useState([]);
   const [filterResturents, setFilterRestrents] = useState([]);
-
-  // const { status, isPending, error, data } = useQuery({
-  //   queryKey: ["repoData"],
-  //   queryFn: () => fetch(SWIGGY_URl).then((res) => res.json()),
-  // staleTime: 1000 * 5,
-  // gcTime: 1000,
-  // });
-  // console.log(data);
-
-  // useEffect(() => {
-  //   if (status === "success") {
-  //     setRestrents(
-  //       data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //     setFilterRestrents(
-  //       data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-  //         ?.restaurants
-  //     );
-  //   }
-  // }, [status, data]);
-  // console.log("hello", resturents);
-
-  // const [searchText, setSearchText] = useState("");
   const refInput = useRef(null);
   const RestuarentCardPromoted = withPromotedLabel(ResCart);
 

@@ -1,9 +1,5 @@
 import { IMAGE_URL } from "../utils/contants";
 const ResCart = (props) => {
-  //const retting = props.cartData?.avgRating;
-  //const name1 = props.cartData?.name;
-  //const cloudinaryImageId = props.cartData?.cloudinaryImageId;
-
   const { name, avgRating, cloudinaryImageId, sla } = props.cartData;
   const { slaString } = sla;
 
